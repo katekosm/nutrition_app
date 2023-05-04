@@ -1,0 +1,38 @@
+// LOCALHOST
+### Get all
+GET http://localhost:8080
+
+### Get by id
+GET http://localhost:8080/6453213c7222aac0c7bd3d79
+
+### Create
+POST http://localhost:8080 HTTP/1.1
+content-type: application/json
+
+{
+    "mealTime":"19:50",
+    "proteins":"8",
+    "fats":"8",
+    "carbohydrates":"8",
+    "waterAmount":"8",
+    "calories":"8",
+    "iron":"8"
+}
+
+### PUT
+PUT http://localhost:8080/64533877ab59098326852b7d HTTP/1.1
+content-type: application/json
+
+{
+    "mealTime":"19:50",
+    "proteins":"10",
+    "fats":"10",
+    "carbohydrates":"10",
+    "waterAmount":"10",
+    "calories":"10",
+    "iron":"10"
+}
+
+
+### DELETE
+DELETE http://localhost:8080/6449fda8fa5397397f0f0034 HTTP/1.1
