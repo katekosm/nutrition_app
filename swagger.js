@@ -7,7 +7,7 @@ const doc = {
     },
     // host: 'localhost:8080',
     // schemes: ['http']
-    host: 'nutrition-app-0gsq.onrender.com',
+    host: 'cse341-mvi1.onrender.com',
     schemes: ['https']
 };
 
