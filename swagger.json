@@ -5,7 +5,7 @@
         "description": "API Description",
         "version": "1.0.0"
     },
-    "host": "cse341-mvi1.onrender.com",
+    "host": "nutrition-app-0gsq.onrender.com",
     "basePath": "/",
     "schemes": [
         "https"
