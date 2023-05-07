@@ -1,6 +1,6 @@
 const db = require('../models');
 const User = db.user;
-const passwordUtil = require('../util/passwordComplexityCheck');
+// const passwordUtil = require('../util/passwordComplexityCheck');
 const { errMsgs } = require('../helper');
 
 const getAll = (req, res) => {
@@ -47,11 +47,11 @@ const createUser = (req, res) => {
             return;
         }
         const password = req.body.password;
-        const passwordCheck = passwordUtil.passwordPass(password);
-        if (passwordCheck.error) {
-            res.status(400).send({ message: passwordCheck.error });
-            return;
-        }
+        // const passwordCheck = passwordUtil.passwordPass(password);
+        // if (passwordCheck.error) {
+        //     res.status(400).send({ message: passwordCheck.error });
+        //     return;
+        // }
         const user = new User(req.body);
         user
             .save()
@@ -77,11 +77,11 @@ const updateUser = (req, res) => {
             return;
         }
         const password = req.body.password;
-        const passwordCheck = passwordUtil.passwordPass(password);
-        if (passwordCheck.error) {
-            res.status(400).send({ message: passwordCheck.error });
-            return;
-        }
+        // const passwordCheck = passwordUtil.passwordPass(password);
+        // if (passwordCheck.error) {
+        //     res.status(400).send({ message: passwordCheck.error });
+        //     return;
+        // }
         User.findOne({ username: username })
             .then((user) => {
                 if (!user) {
