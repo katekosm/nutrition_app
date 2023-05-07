@@ -1,0 +1,22 @@
+{
+    "data": [
+        {
+            "username": "test",
+            "displayName": "test",
+            "gender": "test",
+            "password": "Aa123456!",
+            "email": "test@test.test",
+            "phoneNumber": "test",
+            "location": "test"
+        },
+        {
+            "mealTime": "test",
+            "proteins": "test",
+            "fats": "test",
+            "carbohydrates": "test",
+            "waterAmount": "test",
+            "calories": "test",
+            "iron": "test"
+        }
+    ]
+}
