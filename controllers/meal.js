@@ -27,6 +27,10 @@ const getOne = (req, res) => {
         const mealId = new db.mongoose.mongo.ObjectId(req.params.id);
         Meal.find({ _id: mealId })
             .then((data) => {
+                if (!data) {
+                    res.status(404).json(errMsgs.errWhile + 'retrieving.');
+                    return;
+                }
                 res.status(200).send(data);
             })
             .catch((err) => {
@@ -73,7 +77,7 @@ const updateMeal = (req, res) => {
         Meal.findById(mealId)
             .then((meal) => {
                 if (!meal) {
-                    res.status(500).json(err || errMsgs.errWhile + 'updating.');
+                    res.status(404).json(errMsgs.errWhile + 'updating.');
                     return;
                 }
                 meal.mealTime = req.body.mealTime;

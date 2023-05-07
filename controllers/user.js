@@ -28,6 +28,10 @@ const getOne = (req, res) => {
         }
         User.find({ username: username })
             .then((data) => {
+                if (!data) {
+                    res.status(404).json(errMsgs.errWhile + 'retrieving.');
+                    return;
+                }
                 res.status(200).send(data);
             })
             .catch((err) => {
