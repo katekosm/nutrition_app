@@ -128,7 +128,7 @@ const deleteUser = (req, res) => {
                     res.status(500).json(err || errMsgs.errWhile + 'deleting.');
                     return;
                 }
-                res.status(204).send(result);
+                res.status(200).send(result);
             })
             .catch((err) => {
                 res.status(500).json(err || errMsgs.errWhile + 'deleting.');

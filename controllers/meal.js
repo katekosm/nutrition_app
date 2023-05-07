@@ -115,7 +115,7 @@ const deleteMeal = (req, res) => {
                 if (result.deletedCount === 0) {
                     return res.status(404).send('Document not found');
                 }
-                return res.status(204).send('Document deleted successfully');
+                return res.status(200).send('Document deleted successfully');
             })
             .catch((err) => {
                 res.status(500).json(err || errMsgs.errWhile + 'deleting.');
