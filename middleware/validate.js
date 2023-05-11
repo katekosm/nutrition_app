@@ -14,7 +14,7 @@ const validatorTemplate = (validationRule, req, res, next) => {
     });
 }
 
-const saveUser = (req, res, next) => {
+const user = (req, res, next) => {
     const validationRule = {
         displayName: 'required|string',
         gender: 'required|string',
@@ -26,7 +26,7 @@ const saveUser = (req, res, next) => {
     validatorTemplate(validationRule, req, res, next);
 };
 
-const saveMeal = (req, res, next) => {
+const meal = (req, res, next) => {
     const validationRule = {
         mealTime: 'required|string',
         proteins: 'required|string',
@@ -41,6 +41,6 @@ const saveMeal = (req, res, next) => {
 }
 
 module.exports = {
-    saveUser,
-    saveMeal
+    user,
+    meal
 };

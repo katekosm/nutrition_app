@@ -1,5 +1,5 @@
-const db = require('../models');
-const Meal = db.meal;
+const models = require('../models');
+const Meal = models.meal;
 const { errMsgs } = require('../helper');
 
 const getAll = (req, res) => {
@@ -44,11 +44,8 @@ const getOne = (req, res) => {
 }
 
 const createMeal = (req, res) => {
+    console.log(req.session.user);
     try {
-        if (!req.body.id) {
-            res.status(400).send({ message: errMsgs.notEmpty });
-            return;
-        }
         const meal = new Meal(req.body);
         meal
             .save()

@@ -5,10 +5,10 @@
         "description": "API Description",
         "version": "1.0.0"
     },
-    "host": "nutrition-app-0gsq.onrender.com",
+    "host": "localhost:8080",
     "basePath": "/",
     "schemes": [
-        "https"
+        "http"
     ],
     "paths": {
         "/": {
@@ -56,18 +56,20 @@
                     "meals"
                 ],
                 "description": "",
-                "parameters": [{
-                    "name": "body",
-                    "in": "body",
-                    "schema": {
-                        "type": "object",
-                        "properties": {
-                            "id": {
-                                "example": "any"
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "example": "any"
+                                }
                             }
                         }
                     }
-                }],
+                ],
                 "responses": {
                     "201": {
                         "description": "Created"
@@ -87,12 +89,14 @@
                     "meals"
                 ],
                 "description": "",
-                "parameters": [{
-                    "name": "id",
-                    "in": "path",
-                    "required": true,
-                    "type": "string"
-                }],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -107,7 +111,8 @@
                     "meals"
                 ],
                 "description": "",
-                "parameters": [{
+                "parameters": [
+                    {
                         "name": "id",
                         "in": "path",
                         "required": true,
@@ -161,12 +166,14 @@
                     "meals"
                 ],
                 "description": "",
-                "parameters": [{
-                    "name": "id",
-                    "in": "path",
-                    "required": true,
-                    "type": "string"
-                }],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": "No Content"
@@ -204,21 +211,23 @@
                     "users"
                 ],
                 "description": "",
-                "parameters": [{
-                    "name": "body",
-                    "in": "body",
-                    "schema": {
-                        "type": "object",
-                        "properties": {
-                            "username": {
-                                "example": "any"
-                            },
-                            "password": {
-                                "example": "any"
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "username": {
+                                    "example": "any"
+                                },
+                                "password": {
+                                    "example": "any"
+                                }
                             }
                         }
                     }
-                }],
+                ],
                 "responses": {
                     "201": {
                         "description": "Created"
@@ -238,12 +247,14 @@
                     "users"
                 ],
                 "description": "",
-                "parameters": [{
-                    "name": "username",
-                    "in": "path",
-                    "required": true,
-                    "type": "string"
-                }],
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -258,7 +269,8 @@
                     "users"
                 ],
                 "description": "",
-                "parameters": [{
+                "parameters": [
+                    {
                         "name": "username",
                         "in": "path",
                         "required": true,
@@ -309,12 +321,14 @@
                     "users"
                 ],
                 "description": "",
-                "parameters": [{
-                    "name": "username",
-                    "in": "path",
-                    "required": true,
-                    "type": "string"
-                }],
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": "No Content"
