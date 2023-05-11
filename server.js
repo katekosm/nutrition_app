@@ -42,15 +42,8 @@ process.on('uncaughtException', (err, origin) => {
     console.log(process.stderr.fd, `Caught exception: ${err}\nException origin: ${origin}`);
 });
 
-db
-    .mongoose
-    .connect(db.uri, db.options)
-    .then(() => {
-        app.listen(port, () => {
-            console.log(`DB Connected and server running on ${port}.`);
-        });
-    })
-    .catch((err) => {
-        console.log('Cannot connect to the database!', err);
-        process.exit();
+db.connect(() => {
+    app.listen(port, () => {
+        console.log(`Server running on ${port}.`);
     });
+});
