@@ -46,13 +46,11 @@ const getOne = (req, res) => {
 }
 
 const createMeal = (req, res) => {
-    console.log(req.session.user);
     try {
         const meal = new Meal(req.body);
         meal
             .save()
             .then((data) => {
-                console.log(data);
                 res.status(201).send(data);
             })
             .catch((err) => {
