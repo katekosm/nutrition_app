@@ -4,7 +4,7 @@ const { errMsgs } = require('../helper');
 
 const index = (req, res) => {
     if (req.session.user !== undefined) {
-        res.send(`Logged in as <img width='25' height='25' src='${req.session.user._json.avatar_url}'> ${req.session.user.displayName}. <a href='/api-docs'>API Documentation</a>`);
+        res.send(`Logged in as <img width='25' height='25' src='${req.session.user._json.avatar_url}'> ${req.session.user.displayName}. <a href='/auth/logout'>Logout</a> <a href='/api-docs'>API Documentation</a>`);
     } else {
         res.send("You are logged out. <a href='/auth/login'>Login Page</a>");
     }

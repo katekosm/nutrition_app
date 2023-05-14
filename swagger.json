@@ -5,11 +5,11 @@
         "description": "API Description",
         "version": "1.0.0"
     },
-    "host": "localhost:8080",
-    "basePath": "/",
+    "host": "nutrition-app-0gsq.onrender.com",
     "schemes": [
-        "http"
+        "https"
     ],
+    "basePath": "/",
     "paths": {
         "/": {
             "get": {
@@ -18,17 +18,43 @@
                 "responses": {
                     "200": {
                         "description": "OK"
-                    },
-                    "404": {
-                        "description": "Not Found"
-                    },
-                    "500": {
-                        "description": "Internal Server Error"
                     }
                 }
             }
         },
         "/api-docs": {
+            "get": {
+                "description": "",
+                "parameters": [],
+                "responses": {}
+            }
+        },
+        "/auth/login": {
+            "get": {
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/auth/github": {
+            "get": {
+                "description": "",
+                "parameters": [],
+                "responses": {}
+            }
+        },
+        "/auth/logout": {
+            "get": {
+                "description": "",
+                "parameters": [],
+                "responses": {}
+            }
+        },
+        "/auth/github/callback": {
             "get": {
                 "description": "",
                 "parameters": [],
@@ -56,26 +82,10 @@
                     "meals"
                 ],
                 "description": "",
-                "parameters": [
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "id": {
-                                    "example": "any"
-                                }
-                            }
-                        }
-                    }
-                ],
+                "parameters": [],
                 "responses": {
                     "201": {
                         "description": "Created"
-                    },
-                    "400": {
-                        "description": "Bad Request"
                     },
                     "500": {
                         "description": "Internal Server Error"
@@ -100,6 +110,12 @@
                 "responses": {
                     "200": {
                         "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
                     },
                     "500": {
                         "description": "Internal Server Error"
@@ -156,6 +172,9 @@
                     "400": {
                         "description": "Bad Request"
                     },
+                    "404": {
+                        "description": "Not Found"
+                    },
                     "500": {
                         "description": "Internal Server Error"
                     }
@@ -175,11 +194,14 @@
                     }
                 ],
                 "responses": {
-                    "204": {
-                        "description": "No Content"
+                    "200": {
+                        "description": "OK"
                     },
                     "400": {
                         "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
                     },
                     "404": {
                         "description": "Not Found"
@@ -241,7 +263,7 @@
                 }
             }
         },
-        "/user/{username}": {
+        "/user/{id}": {
             "get": {
                 "tags": [
                     "users"
@@ -249,7 +271,7 @@
                 "description": "",
                 "parameters": [
                     {
-                        "name": "username",
+                        "name": "id",
                         "in": "path",
                         "required": true,
                         "type": "string"
@@ -258,6 +280,12 @@
                 "responses": {
                     "200": {
                         "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
                     },
                     "500": {
                         "description": "Internal Server Error"
@@ -271,7 +299,7 @@
                 "description": "",
                 "parameters": [
                     {
-                        "name": "username",
+                        "name": "id",
                         "in": "path",
                         "required": true,
                         "type": "string"
@@ -282,13 +310,13 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "password": {
-                                    "example": "any"
-                                },
                                 "displayName": {
                                     "example": "any"
                                 },
                                 "gender": {
+                                    "example": "any"
+                                },
+                                "password": {
                                     "example": "any"
                                 },
                                 "email": {
@@ -323,18 +351,21 @@
                 "description": "",
                 "parameters": [
                     {
-                        "name": "username",
+                        "name": "id",
                         "in": "path",
                         "required": true,
                         "type": "string"
                     }
                 ],
                 "responses": {
-                    "204": {
-                        "description": "No Content"
+                    "200": {
+                        "description": "OK"
                     },
                     "400": {
                         "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
                     },
                     "500": {
                         "description": "Internal Server Error"

@@ -1,6 +1,7 @@
 const models = require('../models');
 const Meal = models.meal;
 const { errMsgs } = require('../helper');
+const ObjectId = db.mongoose.mongo.ObjectId;
 
 const getAll = (req, res) => {
     try {
@@ -20,11 +21,12 @@ const getAll = (req, res) => {
 
 const getOne = (req, res) => {
     try {
-        if (!req.params.id) {
-            res.status(400).send({ message: errMsgs.notEmpty });
+        let mealId = req.params.id;
+        if (!mealId || !ObjectId.isValid(mealId)) {
+            res.status(400).send({ message: errMsgs.invalidId });
             return;
         }
-        const mealId = new db.mongoose.mongo.ObjectId(req.params.id);
+        mealId = new ObjectId(mealId);
         Meal.find({ _id: mealId })
             .then((data) => {
                 if (!data) {
@@ -66,11 +68,11 @@ const createMeal = (req, res) => {
 const updateMeal = (req, res) => {
     try {
         let mealId = req.params.id;
-        if (!mealId) {
+        if (!mealId || !ObjectId.isValid(mealId)) {
             res.status(400).send({ message: errMsgs.invalidId });
             return;
         }
-        mealId = new db.mongoose.mongo.ObjectId(mealId);
+        mealId = new ObjectId(mealId);
         Meal.findById(mealId)
             .then((meal) => {
                 if (!meal) {
@@ -106,11 +108,11 @@ const updateMeal = (req, res) => {
 const deleteMeal = (req, res) => {
     try {
         let mealId = req.params.id;
-        if (!mealId) {
+        if (!mealId || !ObjectId.isValid(mealId)) {
             res.status(400).send({ message: errMsgs.invalidId });
             return;
         }
-        mealId = new db.mongoose.mongo.ObjectId(mealId);
+        mealId = new ObjectId(mealId);
         Meal.deleteOne({ _id: mealId })
             .then((result) => {
                 if (result.deletedCount === 0) {

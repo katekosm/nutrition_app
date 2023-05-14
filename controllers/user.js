@@ -2,6 +2,7 @@ const models = require('../models');
 const User = models.user;
 // const passwordUtil = require('../util/passwordComplexityCheck');
 const { errMsgs } = require('../helper');
+const ObjectId = db.mongoose.mongo.ObjectId;
 
 const getAll = (req, res) => {
     try {
@@ -21,12 +22,13 @@ const getAll = (req, res) => {
 
 const getOne = (req, res) => {
     try {
-        const username = req.params.username;
-        if (!username) {
-            res.status(400).send({ message: errMsgs.notEmpty });
+        let userId = req.params.id;
+        if (!userId || !ObjectId.isValid(userId)) {
+            res.status(400).send({ message: errMsgs.invalidId });
             return;
         }
-        User.find({ username: username })
+        userId = new ObjectId(userId);
+        User.find({ _id: userId })
             .then((data) => {
                 if (!data) {
                     res.status(404).json(errMsgs.errWhile + 'retrieving.');
@@ -50,7 +52,7 @@ const createUser = (req, res) => {
             res.status(400).send({ message: errMsgs.notEmpty });
             return;
         }
-        const password = req.body.password;
+        // const password = req.body.password;
         // const passwordCheck = passwordUtil.passwordPass(password);
         // if (passwordCheck.error) {
         //     res.status(400).send({ message: passwordCheck.error });
@@ -75,18 +77,19 @@ const createUser = (req, res) => {
 
 const updateUser = (req, res) => {
     try {
-        const username = req.params.username;
-        if (!username) {
-            res.status(400).send({ message: 'Invalid Username Supplied' });
+        let userId = req.params.id;
+        if (!userId || !ObjectId.isValid(userId)) {
+            res.status(400).send({ message: errMsgs.invalidId });
             return;
         }
-        const password = req.body.password;
+        userId = new ObjectId(userId);
+        // const password = req.body.password;
         // const passwordCheck = passwordUtil.passwordPass(password);
         // if (passwordCheck.error) {
         //     res.status(400).send({ message: passwordCheck.error });
         //     return;
         // }
-        User.findOne({ username: username })
+        User.findOne({ _id: userId })
             .then((user) => {
                 if (!user) {
                     res.status(500).json(err || errMsgs.errWhile + 'updating.');
@@ -121,12 +124,13 @@ const updateUser = (req, res) => {
 
 const deleteUser = (req, res) => {
     try {
-        const username = req.params.username;
-        if (!username) {
-            res.status(400).send({ message: 'Invalid Username Supplied' });
+        let userId = req.params.id;
+        if (!userId || !ObjectId.isValid(userId)) {
+            res.status(400).send({ message: errMsgs.invalidId });
             return;
         }
-        User.deleteOne({ username: username })
+        userId = new ObjectId(userId);
+        User.deleteOne({ _id: userId })
             .then((result) => {
                 if (!result) {
                     res.status(500).json(err || errMsgs.errWhile + 'deleting.');

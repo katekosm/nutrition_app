@@ -6,9 +6,9 @@ const { verifyUser } = require('../middleware/common');
 const { isAuthenticated } = require('../middleware/auth');
 
 router.get('/', userController.getAll);
-router.get('/:username', userController.getOne);
+router.get('/:id', userController.getOne);
 router.post('/', verifyUser, userController.createUser);
-router.put('/:username', verifyUser, userController.updateUser);
-router.delete('/:username', isAuthenticated, userController.deleteUser);
+router.put('/:id', verifyUser, userController.updateUser);
+router.delete('/:id', isAuthenticated, userController.deleteUser);
 
 module.exports = router;
